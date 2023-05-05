@@ -42,14 +42,43 @@ namespace LinearAlgebra
         }
 
         private double[,] coefficients;
+        public Matrix()
+        {
 
+        }
         public Matrix(double[,] coefficients)
         {
             this.coefficients = coefficients;
         }
         public static Matrix CreateMatrix(int rows, int cols)
         {
-            throw new ArgumentException();
+            Random random = new();
+            double[,] result = new double[rows, cols];
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    result[i, j] = random.Next(0,100);
+                }
+            }
+
+            return new Matrix(result);
+        }
+        public static Matrix CreateMatrix(int rows, int cols, int min, int max)
+        {
+            Random random = new();
+            double[,] result = new double[rows, cols];
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    result[i, j] = random.Next(min, max);
+                }
+            }
+
+            return new Matrix(result);
         }
         public static Matrix IdentityMatrix(int rows, int cols)
         {
